@@ -9,9 +9,9 @@ class ListaStudenti(ListaPersone):
 	def __init__(self):
 		ListaPersone.__init__(self)
 
-	def Aggiungi(self, nome, cognome):
-		p = Studente(nome, cognome)
-		self._Lista.append(p)
+	def Nuovo(self, nome, cognome):
+		s = Studente(nome, cognome)
+		self._Lista.append(s)
 
 	def CaricaCompagni(self):
 		n = 3

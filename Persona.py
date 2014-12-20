@@ -11,17 +11,17 @@ class Persona(object):
 		return s
 	
 	def StampaHeader(self, largh):
-		riga = "|{0}+{0}|".format('-' * largh)
-		s = "|{0:^{n}}|{1:^{n}}|".format(self._nome, self._cognome, n = largh)
+		riga = "|-----+{0}+{0}|".format('-' * largh)
+		s = "|  #  |{0:^{n}}|{1:^{n}}|".format(self._nome, self._cognome, n = largh)
 		s = riga + "\n" + s + "\n" + riga
 		print(s)
 
 	def StampaFooter(self, largh):
-		s = "|{0}+{0}|".format('-' * largh)
+		s = "|-----+{0}+{0}|".format('-' * largh)
 		print(s)
 
-	def Stampa(self, largh):
-		s = "|{0:<{n}}|{1:<{n}}|".format(self._nome, self._cognome, n = largh)
+	def Stampa(self, riga, largh):
+		s = "|{0:^5}|{1:<{n}}|{2:<{n}}|".format(riga, self._nome, self._cognome, n = largh)
 		print(s)
 
 	def getNomeCognome(self):
