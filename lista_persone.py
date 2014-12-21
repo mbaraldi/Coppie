@@ -1,11 +1,9 @@
-from Persona import Persona
+from persona import Persona
 from os import path
 import pickle
 
 class ListaPersone(object):
-	"""
-	gestisce una lista di oggetti Persona
-	caricandoli e salvandoli su file
+	""" gestisce una lista di oggetti Persona, caricandoli e salvandoli su file
 	"""
 	def __init__(self):
 		self._Lista = []

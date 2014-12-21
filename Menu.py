@@ -1,10 +1,8 @@
-from MenuItem import *
+from menu_item import MenuItem
 
 class Menu(object):
-	"""
-	Menu principale del programma
-
-	"""
+	""" Menu principale del programma """
+	
 	def __init__(self):
 		self._nvoci = 0
 		self._menuItems = []

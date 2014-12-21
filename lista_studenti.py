@@ -1,11 +1,10 @@
-from ListaPersone import ListaPersone
-from Studente import Studente
+from lista_persone import ListaPersone
+from studente import Studente
 import random
 
 class ListaStudenti(ListaPersone):
-	"""
-	Lista di studenti, derivata dalla lista di persone generiche
-	"""
+	""" Lista di studenti, derivata dalla lista di persone generiche """
+	
 	def __init__(self):
 		ListaPersone.__init__(self)
 
