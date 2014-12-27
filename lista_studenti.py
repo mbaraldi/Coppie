@@ -10,25 +10,25 @@ class ListaStudenti(ListaPersone):
 
 	def Nuovo(self, nome, cognome):
 		s = Studente(nome, cognome)
-		self._Lista.append(s)
+		self.lista.append(s)
 
 	def CaricaCompagni(self):
 		n = 3
 		m= 0
-		for st in self._Lista:
+		for st in self.lista:
 			st.AggiungiCompagno(n)
 			st.AggiungiCompagno(m)
 			n -= 1
 			m += 1
 
 	def StampaCoppie(self):
-		for st in self._Lista:
+		for st in self.lista:
 			compagni = st.getListaCompagni()
 			a = st.getNomeCognome()
 			s = "{0} e' stato in banco con:".format(a)
 			print(s)
 			for c in compagni:
-				comp = self._Lista[c].getNomeCognome()
+				comp = self.lista[c].getNomeCognome()
 				comp = "- {0}".format(comp)
 				print(comp)
 			print('\n')
@@ -36,10 +36,10 @@ class ListaStudenti(ListaPersone):
 	def GeneraCoppie(self):
 		nuova_lista = []
 		#numero di compagni (tutti tranne lo studente stesso)
-		ncomp = len(self._Lista) - 1
+		ncomp = len(self.lista) - 1
 		print("n. compagni: " + str(ncomp))
 		i = 0
-		for stud in self._Lista:
+		for stud in self.lista:
 			print('*'*30)
 			#crea la lista di tutti i compagni
 			tlista = []
@@ -74,7 +74,7 @@ class ListaStudenti(ListaPersone):
 		print (nuova_lista)
 		print ("\n")
 		i = 0
-		for st in self._Lista:
+		for st in self.lista:
 			a = st.getNomeCognome()
 			b = self._Lista[nuova_lista[i]].getNomeCognome()
 			s = "{0} va in banco con {1}".format(a, b)

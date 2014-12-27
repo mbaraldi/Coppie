@@ -3,30 +3,24 @@ class Persona(object):
 	classe base per una persona generica
 	"""
 	def __init__(self, nome, cognome):
-		self._nome = nome
-		self._cognome = cognome
+		self.nome = nome
+		self.cognome = cognome
 
 	def __str__(self):
-		s = "nome:\t\t" + self._nome + "\ncognome:\t" + self._cognome
+		s = "nome:\t\t" + self.nome + "\ncognome:\t" + self.cognome
 		return s
 	
-	def StampaHeader(self, largh):
-		riga = "|-----+{0}+{0}|".format('-' * largh)
-		s = "|  #  |{0:^{n}}|{1:^{n}}|".format(self._nome, self._cognome, n = largh)
-		s = riga + "\n" + s + "\n" + riga
-		print(s)
-
-	def StampaFooter(self, largh):
-		s = "|-----+{0}+{0}|".format('-' * largh)
-		print(s)
-
-	def Stampa(self, riga, largh):
-		s = "|{0:^5}|{1:<{n}}|{2:<{n}}|".format(riga, self._nome, self._cognome, n = largh)
-		print(s)
-
-	def getNomeCognome(self):
-		return str(self._nome + " " + self._cognome)
+	def __lt__(self, other):
+		minore = False
+		if self.cognome < other.cognome:
+			minore = True
+		else:
+			if self.cognome == other.cognome and self.nome < other.nome:
+				minore = True
+		return minore
 
 	def getCognomeNome(self):
-		return str(self._cognome + " " + self._nome)
+		return str(self.cognome + " " + self.nome)
 
+	def getNomeCognome(self):
+		return str(self.nome + " " + self.cognome)
