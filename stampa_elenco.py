@@ -1,23 +1,38 @@
 class StampaElenco(object):
-	"""stampa a video una lista di oggetti"""
+	"""
+	stampa a video una lista di liste di stringhe
+	usando la prima riga come intestazione
+	"""
 
-	def __init__(self, nomiColonne, largh = 20):
-		#prende solo il numero di colonne gestite dalla classe
+	def __init__(self, largh = 20):
+		self._nomiColonne = [] #titoli delle colonne, ricavati dalla prima riga della lista
+		self._lista = [] #lista di valori da stampare
+		self._ncolonne = 0 #numero di colonne
+		self._largh = largh #larghezza delle colonne
+
+	def _CaricaLista(self, lista):
 		MAXCOLONNE = 5 #massimo numero di colonne gestite
 		MAXLARGH = 70  #larghezza massima della tabella
-		self._nomiColonne = nomiColonne[:MAXCOLONNE]
-		self._ncolonne = len(self._nomiColonne)
-		self._largh = min(largh, int(MAXLARGH/self._ncolonne))
+		self._nomiColonne = []
 		self._lista = []
+		#prende solo il numero di colonne gestite dalla classe
+		self._ncolonne = min(len(lista[0]), MAXCOLONNE)
+		#adatta la larghezza al numero di colonne da stampare
+		self._largh = min(self._largh, int(MAXLARGH/self._ncolonne))
 
-	def CaricaLista(self, lista):
+		righe = 0
 		for elem in lista:
+			righe += 1
 			tmp=[]
 			for campo in elem:
 				tmp.append(campo[:self._largh - 1])
-			self._lista.append(tmp)
+			#la prima riga contiene le intestazioni di colonna
+			if righe == 1:
+				self._nomiColonne = tmp
+			else:
+				self._lista.append(tmp)
 
-	def Stampa(self):
+	def _Stampa(self):
 		#riga vuota di separazione, usata sia nell'header che nel footer
 		separatore = "|----"
 		for i in range (0, self._ncolonne):
@@ -49,4 +64,7 @@ class StampaElenco(object):
 		#stampa il footer
 		print(separatore)
 
+	def Stampa(self, lista):
+		self._CaricaLista(lista)
+		self._Stampa()
 

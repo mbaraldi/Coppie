@@ -1,15 +1,12 @@
 from persona import Persona
-from stampa_elenco import StampaElenco
-
-from os import path
-import pickle
+from archiviatore import Archiviatore
 
 class ListaPersone(object):
 	""" gestisce una lista di oggetti Persona, caricandoli e salvandoli su file
 	"""
 	def __init__(self):
-		self.lista = []
-		self._file = ".\data.pkl"
+		self.lista = [] #lista di persone
+		self.archivio = Archiviatore()
 
 	def Nuovo(self, nome, cognome):
 		p = Persona(nome, cognome)
@@ -42,20 +39,15 @@ class ListaPersone(object):
 	def Ordina(self):
 		self.lista = sorted(self.lista)
 	
-	def Salva(self):
-		pickle.dump(self.lista, open(self._file, "wb"))
+	def Carica(self, file = "data"):
+		self.lista = self.archivio.Carica(file)
 
-	def Carica(self):
-		if path.isfile(self._file):
-			self.lista = pickle.load(open(self._file, "rb"))
-		else:
-			self.lista = []
-		print ("Caricati {0} elementi".format(len(self.lista)))
+	def Salva(self, file = ""):
+		self.archivio.Salva(self.lista, file)
 
-	def Stampa(self):
-		st = StampaElenco(["Nome", "Cognome"], 15)
+	def getListaDaStampare(self):
 		lista = []
-		for stud in self.lista:
-			lista.append([stud.nome, stud.cognome])
-		st.CaricaLista(lista)
-		st.Stampa()
+		lista.append(["Nome", "Cognome"])
+		for elem in self.lista:
+			lista.append([elem.nome, elem.cognome])
+		return lista
