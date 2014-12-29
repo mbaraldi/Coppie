@@ -7,7 +7,7 @@ class Archiviatore(object):
 		self.file = "" #nome del file su cui salvare
 		
 	def Carica(self, file = "data"):
-		self.file = ".\\" + file + ".pkl"
+		self.file = file + ".pkl"
 		if path.isfile(self.file):
 			lista = pickle.load(open(self.file, "rb"))
 		else:
@@ -19,5 +19,5 @@ class Archiviatore(object):
 
 	def Salva(self, lista, file = ""):
 		if file > "": #salva su un altro file
-			self.file = ".\\" + file + "\.pkl"
+			self.file = file + "\.pkl"
 		pickle.dump(lista, open(self.file, "wb"))
