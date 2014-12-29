@@ -5,11 +5,18 @@ import random
 class ListaStudenti(ListaPersone):
 	""" Lista di studenti, derivata dalla lista di persone generiche """
 	
-	def __init__(self):
+	def __init__(self, classe, sezione):
 		ListaPersone.__init__(self)
+		self.classe = classe
+		self.sezione = sezione
 
-	def Nuovo(self, nome, cognome):
-		s = Studente(nome, cognome)
+	def Nuovo(self, nome, cognome, num = 0):
+		self.npersone += 1
+		if num == 0:
+			n = self.npersone
+		else:
+			n = num
+		s = Studente(nome, cognome, n)
 		self.lista.append(s)
 
 	def CaricaCompagni(self):

@@ -3,7 +3,7 @@ from lista_coppie import ListaCoppie
 from stampa_elenco import StampaElenco
 from menu import Menu
 
-studenti = ListaStudenti()
+studenti = ListaStudenti("Prima", "A")
 coppie = ListaCoppie()
 stampe = StampaElenco(40)
 
