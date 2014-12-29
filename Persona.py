@@ -11,12 +11,14 @@ class Persona(object):
 		return s
 	
 	def __lt__(self, other):
+		c1 = self.cognome.lower()
+		c2 = other.cognome.lower()
+		n1 = self.nome.lower()
+		n2 = other.nome.lower()
+
 		minore = False
-		if self.cognome < other.cognome:
+		if (c1 < c2 or (c1 == c2 and n1 < n2)):
 			minore = True
-		else:
-			if self.cognome == other.cognome and self.nome < other.nome:
-				minore = True
 		return minore
 
 	def getCognomeNome(self):
